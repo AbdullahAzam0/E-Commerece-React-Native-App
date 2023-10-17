@@ -1,7 +1,20 @@
-import * as React from "react";
+import React, { useState } from "react";
 import { View, Text, TextInput, SafeAreaView, TouchableOpacity, Image, StyleSheet } from "react-native";
 
 export default function Login({ navigation }) {
+    const [email, setEmail] = useState(""); 
+    const [password, setPassword] = useState(""); 
+  
+    const handleLogin = () => {
+      if (email.trim() !== "" && password.trim() !== "") {
+        navigation.navigate("bottomNavigation");
+      } else 
+      {
+        alert("Please fill in both email and password fields.");
+      }
+      
+    };
+    
     return (
         <SafeAreaView style={styles.container}>
             <View>
@@ -17,18 +30,20 @@ export default function Login({ navigation }) {
                 <TextInput style={styles.input}
                     placeholder="E-mail"
                     placeholderTextColor="grey"
+                    onChangeText={text => setEmail(text)} // Update email state
                 />
 
                 <TextInput style={styles.input}
                     placeholder="Password"
                     placeholderTextColor="grey"
+                    onChangeText={text => setPassword(text)} // Update password state
                 />
 
                 <TouchableOpacity onPress={() => navigation.navigate('forgotPassword')}>
                     <Text style={styles.forgotPassword}>Forgot your password</Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={styles.loginButton} onPress={() => navigation.navigate('bottomNavigation')}>
+                <TouchableOpacity style={styles.loginButton} onPress={handleLogin}>
                     <Text style={styles.loginButtonText}>LOGIN</Text>
                 </TouchableOpacity>
 
