@@ -1,18 +1,23 @@
 import React, { useState } from "react";
-import { View, Text, TextInput, SafeAreaView, TouchableOpacity, Image, StyleSheet } from "react-native";
+import { View, Text, TextInput, SafeAreaView, TouchableOpacity, Image, StyleSheet,Alert } from "react-native";
 
 export default function Login({ navigation }) {
-    const [email, setEmail] = useState(""); 
-    const [password, setPassword] = useState(""); 
-  
+
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+    const savedemail = 'eritheialab'; 
+    const savedPassword = 'eritheia786'; 
+
     const handleLogin = () => {
-      if (email.trim() !== "" && password.trim() !== "") {
-        navigation.navigate("bottomNavigation");
-      } else 
-      {
-        alert("Please fill in both email and password fields.");
-      }
-      
+        if (email === savedemail && password === savedPassword) {
+            Alert.alert('Login successful');
+            navigation.navigate('bottomNavigation'); 
+        } else {
+            Alert.alert('Error', 'Invalid email or password');
+        }
+        setEmail('');
+        setPassword('');
     };
     
     return (
@@ -30,13 +35,13 @@ export default function Login({ navigation }) {
                 <TextInput style={styles.input}
                     placeholder="E-mail"
                     placeholderTextColor="grey"
-                    onChangeText={text => setEmail(text)} // Update email state
+                    onChangeText={text => setEmail(text)} 
                 />
 
                 <TextInput style={styles.input}
                     placeholder="Password"
                     placeholderTextColor="grey"
-                    onChangeText={text => setPassword(text)} // Update password state
+                    onChangeText={text => setPassword(text)}
                 />
 
                 <TouchableOpacity onPress={() => navigation.navigate('forgotPassword')}>
