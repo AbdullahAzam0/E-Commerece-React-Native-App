@@ -16,8 +16,6 @@ export default function Login({ navigation }) {
         } else {
             Alert.alert('Error', 'Invalid email or password');
         }
-        setEmail('');
-        setPassword('');
     };
     
     return (
