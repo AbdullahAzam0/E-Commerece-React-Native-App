@@ -2,10 +2,10 @@ import * as React from "react";
 import { View, SafeAreaView, Image, FlatList, TouchableOpacity, Text, StyleSheet } from "react-native";
 
 const categories = [
-    { id: 1, name: "Men", image: require('/home/eritheia/E-Commerce/src/asset/men.jpg') },
-    { id: 2, name: "Women", image: require('/home/eritheia/E-Commerce/src/asset/women.jpg') },
-    { id: 3, name: "Kids", image: require('/home/eritheia/E-Commerce/src/asset/kid.jpg') },
-    { id: 4, name: "Pets", image: require('/home/eritheia/E-Commerce/src/asset/pet.jpg') },
+    { id: 1, name: "Men", image: require('../asset/men.jpg') },
+    { id: 2, name: "Women", image: require('../asset/women.jpg') },
+    { id: 3, name: "Kids", image: require('../asset/kid.jpg') },
+    { id: 4, name: "Pets", image: require('../asset/pet.jpg') },
 ];
 
 export default function Dashboard({ navigation }) {
@@ -13,7 +13,7 @@ export default function Dashboard({ navigation }) {
         <SafeAreaView style={styles.container}>
             <View>
                 <Image
-                    source={require('/home/eritheia/E-Commerce/src/asset/dashboard.png')}
+                    source={require('../asset/dashboard.png')}
                     style={styles.backgroundImage}
                 />
 

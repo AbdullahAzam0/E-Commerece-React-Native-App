@@ -6,7 +6,7 @@ export default function MyProfile({ navigation }) {
         <SafeAreaView style={styles.container}>
             <View style={styles.centered}>
                 <Image
-                    source={require('/home/eritheia/E-Commerce/src/asset/men.jpg')}
+                    source={require('../asset/men.jpg')}
                     style={styles.profileImage}
                 />
                 <Text style={styles.profileText}>Abdullah Azam</Text>
