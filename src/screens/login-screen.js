@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-import { View, Text, TextInput, SafeAreaView, TouchableOpacity, Image, StyleSheet,Alert } from "react-native";
+import { View, Text, TextInput, SafeAreaView, TouchableOpacity, StyleSheet, Alert } from "react-native";
+import { FontAwesome } from 'react-native-vector-icons';
 
 export default function Login({ navigation }) {
-
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const savedemail = 'eritheialab'; 
-    const savedPassword = 'eritheia786'; 
+    const savedemail = 'eritheia'; 
+    const savedPassword = 'eritheia'; 
 
     const handleLogin = () => {
         if (email === savedemail && password === savedPassword) {
@@ -22,10 +22,7 @@ export default function Login({ navigation }) {
         <SafeAreaView style={styles.container}>
             <View>
                 <TouchableOpacity onPress={() => navigation.navigate('signUp')}>
-                    <Image
-                        source={require('/home/eritheia/E-Commerce/src/asset/back.png')}
-                        style={styles.backButton}
-                    />
+                    <FontAwesome name="arrow-left" size={30} style={styles.backIcon} />
                 </TouchableOpacity>
 
                 <Text style={styles.title}>Login</Text>
@@ -54,16 +51,10 @@ export default function Login({ navigation }) {
 
                 <View style={styles.socialButtons}>
                     <TouchableOpacity>
-                        <Image
-                            source={require('/home/eritheia/E-Commerce/src/asset/google.png')}
-                            style={styles.socialIcon}
-                        />
+                        <FontAwesome name="google" size={40} style={styles.socialIcon} />
                     </TouchableOpacity>
                     <TouchableOpacity>
-                        <Image
-                            source={require('/home/eritheia/E-Commerce/src/asset/facebook.png')}
-                            style={styles.socialIcon}
-                        />
+                        <FontAwesome name="facebook" size={40} style={styles.socialIcon} />
                     </TouchableOpacity>
                 </View>
             </View>
@@ -75,11 +66,10 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
     },
-    backButton: {
+    backIcon: {
         marginTop: 50,
-        width: 30,
-        height: 30,
         marginLeft: 20,
+        color: 'black',
     },
     title: {
         margin: 30,
@@ -132,9 +122,9 @@ const styles = StyleSheet.create({
         marginTop: 20,
     },
     socialIcon: {
-        width: 50,
-        backgroundColor:'white',
-        height: 50,
+        width: 40,
+        height: 40,
         marginRight: 20,
+        color: 'black',
     },
 });

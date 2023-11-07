@@ -1,5 +1,6 @@
 import * as React from "react";
-import { View, Text, TextInput, SafeAreaView, TouchableOpacity, Image, StyleSheet } from "react-native";
+import { View, Text, TextInput, SafeAreaView, TouchableOpacity, StyleSheet } from "react-native";
+import { FontAwesome } from 'react-native-vector-icons';
 
 export default function Signup({ navigation }) {
   return (
@@ -36,23 +37,16 @@ export default function Signup({ navigation }) {
 
         <View style={styles.socialIcons}>
           <TouchableOpacity>
-          <Image
-            source={require('/home/eritheia/E-Commerce/src/asset/google.png')}
-            style={styles.icon}
-          />
+            <FontAwesome name="google" size={40} style={styles.icon} />
           </TouchableOpacity>
           <TouchableOpacity>
-          <Image
-            source={require('/home/eritheia/E-Commerce/src/asset/facebook.png')}
-            style={styles.icon}
-          />
+            <FontAwesome name="facebook" size={40} style={styles.icon} />
           </TouchableOpacity>
         </View>
       </View>
     </SafeAreaView>
   );
 }
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -108,9 +102,8 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   icon: {
-    width: 50,
-    backgroundColor:'white',
-    height: 50,
+    width: 40,
+    height: 40,
     marginHorizontal: 20,
   },
 });

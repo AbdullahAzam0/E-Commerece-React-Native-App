@@ -1,16 +1,13 @@
 import * as React from "react";
-import { View, Text, TextInput, SafeAreaView, TouchableOpacity, Image, StyleSheet } from "react-native";
+import { View, Text, TextInput, SafeAreaView, TouchableOpacity, StyleSheet } from "react-native";
+import { FontAwesome } from 'react-native-vector-icons';
 
 export default function ForgotPassword({ navigation }) {
     return (
         <SafeAreaView style={styles.container}>
             <View>
-
                 <TouchableOpacity onPress={() => navigation.navigate('logIn')}>
-                    <Image
-                        source={require('/home/eritheia/E-Commerce/src/asset/back.png')}
-                        style={styles.backButton}
-                    />
+                    <FontAwesome name="arrow-left" size={30} style={styles.backIcon} />
                 </TouchableOpacity>
 
                 <Text style={styles.title}>Forgot Password</Text>
@@ -28,7 +25,6 @@ export default function ForgotPassword({ navigation }) {
                 <TouchableOpacity style={styles.sendButton}>
                     <Text style={styles.sendButtonText}>SEND</Text>
                 </TouchableOpacity>
-
             </View>
         </SafeAreaView>
     );
@@ -38,11 +34,10 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
     },
-    backButton: {
+    backIcon: {
         marginTop: 50,
-        width: 30,
-        height: 30,
         marginLeft: 20,
+        color: 'black',
     },
     title: {
         margin: 30,
