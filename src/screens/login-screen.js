@@ -6,18 +6,15 @@ export default function Login({ navigation }) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const savedemail = 'eritheia'; 
-    const savedPassword = 'eritheia'; 
-
     const handleLogin = () => {
-        if (email === savedemail && password === savedPassword) {
+        if (email && password) {
             Alert.alert('Login successful');
-            navigation.navigate('bottomNavigation'); 
+            navigation.navigate('bottomNavigation');
         } else {
             Alert.alert('Error', 'Invalid email or password');
         }
     };
-    
+
     return (
         <SafeAreaView style={styles.container}>
             <View>
@@ -27,16 +24,19 @@ export default function Login({ navigation }) {
 
                 <Text style={styles.title}>Login</Text>
 
-                <TextInput style={styles.input}
+                <TextInput
+                    style={styles.input}
                     placeholder="E-mail"
                     placeholderTextColor="grey"
-                    onChangeText={text => setEmail(text)} 
+                    onChangeText={text => setEmail(text)}
                 />
 
-                <TextInput style={styles.input}
+                <TextInput
+                    style={styles.input}
                     placeholder="Password"
                     placeholderTextColor="grey"
                     onChangeText={text => setPassword(text)}
+                    secureTextEntry={true}
                 />
 
                 <TouchableOpacity onPress={() => navigation.navigate('forgotPassword')}>
