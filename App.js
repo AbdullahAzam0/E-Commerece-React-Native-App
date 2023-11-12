@@ -2,6 +2,9 @@ import * as React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
+import { Provider } from "react-redux";
+import store from "./src/redux/store";
+
 import Signup from "./src/screens/signup-screen";
 import Login from "./src/screens/login-screen";
 import ForgotPassword from "./src/screens/forgootpassword-screen";
@@ -20,7 +23,7 @@ const Stack = createNativeStackNavigator();
 
 export default function ECommerece() {
   return (
-
+    <Provider store={store}>
     <NavigationContainer>
       <Stack.Navigator initialRouteName='E-COMMERECE'>
 
@@ -134,5 +137,6 @@ export default function ECommerece() {
 
       </Stack.Navigator>
     </NavigationContainer>
+    </Provider>
   )
 }

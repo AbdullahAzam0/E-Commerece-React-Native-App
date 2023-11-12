@@ -46,7 +46,7 @@ export default function Products({ route, navigation }) {
     return (
         <SafeAreaView style={styles.container}>
              <TextInput
-          placeholder="Search Categories"
+          placeholder="Search Prodcts"
           style={styles.searchInput}
           value={searchItem}
           onChangeText={(text) => setSearchItem(text)}

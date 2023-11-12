@@ -1,51 +1,70 @@
-import * as React from "react";
-import { View, Text, SafeAreaView, TouchableOpacity, Image,StyleSheet } from "react-native";
+import React from "react";
+import { View, Text, SafeAreaView, Image, TouchableOpacity, StyleSheet, ScrollView } from "react-native";
+import { useSelector, useDispatch } from 'react-redux';
+import { removeFromCart } from "../redux/actions";
 
-export default function AddToCart({route,navigation}) {
-    const { product, additionalDetails } = route.params;
-    const filterDetails = additionalDetails[product.id];
+export default function AddToCart() {
+  const cartItems = useSelector((state) => state.cart);
+  const dispatch = useDispatch();
 
-    return (
-        <SafeAreaView style={styles.container}>
-            <View style={styles.productContainer}>
-                <Image source={product.image} style={styles.productImage} />
-                <Text style={styles.productInfo}>Size: {filterDetails.size}</Text>
-                <Text style={styles.productInfo}>Color: {filterDetails.color}</Text>
-                <Text style={styles.productInfo}>Price: {filterDetails.price}</Text>
-                <Text style={styles.productInfo}>Brand: {filterDetails.brand}</Text>
-
-                <TouchableOpacity style={{
-                width: 250, height: 40, marginTop: 20, borderwidth: 1,
-                borderRadius: 9, alignSelf: "center", padding: 5, backgroundColor: "#DB3022",
-            }} onPress={() => navigation.navigate('Profile')}>
-                <Text style={{ alignSelf: 'center', margin: 5 }}>Buy</Text>
-            </TouchableOpacity>
-
+  return (
+    <SafeAreaView style={styles.container}>
+      <ScrollView contentContainerStyle={styles.scrollContainer}>
+        <Text style={styles.heading}>Items in Cart:</Text>
+        {cartItems.map((item, index) => (
+          <View style={styles.cartItemContainer} key={index}>
+            <Image source={item.image} style={styles.productImage} />
+            <View style={styles.productInfo}>
+              <Text style={styles.productName}>{item.name}</Text>
+              <TouchableOpacity onPress={() => dispatch(removeFromCart(item.id))}>
+                <Text style={styles.removeButton}>Remove from Cart</Text>
+              </TouchableOpacity>
             </View>
-        </SafeAreaView>
-    );
+          </View>
+        ))}
+      </ScrollView>
+    </SafeAreaView>
+  );
 }
-
+  
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-    },
-    productContainer: {
-        flex: 1,
-        alignItems: "center",
-        justifyContent: "center",
-        backgroundColor: "white",
-        padding: 16,
-        borderRadius: 8,
-        elevation: 5,
-    },
-    productImage: {
-        width: 200,
-        height: 200,
-        resizeMode: "cover",
-        marginBottom: 16,
-    },
-    productInfo: {
-        fontSize: 16,
-    },
+  container: {
+    flex: 1,
+    backgroundColor: "#f4f4f4",
+  },
+  scrollContainer: {
+    padding: 16,
+  },
+  heading: {
+    fontSize: 24,
+    fontWeight: "bold",
+    marginBottom: 16,
+    color: "#333", 
+    alignSelf:'center'
+  },
+  cartItemContainer: {
+    marginBottom: 20,
+    backgroundColor: "white",
+    borderRadius: 8,
+    overflow: "hidden",
+    elevation: 5,
+  },
+  productImage: {
+    width: "100%",
+    height: 200,
+    resizeMode: "cover",
+  },
+  productInfo: {
+    padding: 16,
+  },
+  productName: {
+    fontSize: 18,
+    fontWeight: "bold",
+    marginBottom: 8,
+    color: "#444", 
+  },
+  removeButton: {
+    color: "#ff4500", 
+    marginTop: 8,
+  },
 });

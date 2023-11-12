@@ -2,7 +2,11 @@ import React from "react";
 import { View, SafeAreaView, Text, Image, ScrollView, TouchableOpacity,StyleSheet} from "react-native";
 import Icon from 'react-native-vector-icons/FontAwesome';
 
+import { useDispatch } from "react-redux";
+import { addToCart,addToFavorites } from "../redux/actions";
+
 export default function ProductDetail({ route, navigation }) {
+  const dispatch = useDispatch();
 
   const additionalDetails = {
     1: { size: "XL", color: "White", price: "1500", brand: "outfitter" },
@@ -56,10 +60,22 @@ export default function ProductDetail({ route, navigation }) {
           <Text style={styles.productInfo}>Brand: {filterDetails.brand}</Text>
         </View>
         <View style={styles.iconContainer}>
-          <TouchableOpacity style={styles.favoriteIcon} onPress={() => navigation.navigate('favourite',{ product: product, additionalDetails: additionalDetails})}>
+          <TouchableOpacity
+            style={styles.favoriteIcon}
+            onPress={() => {
+              dispatch(addToFavorites(product));
+              navigation.navigate('favourite');
+            }}
+          >
             <Icon name="heart" size={40} color="red" />
           </TouchableOpacity>
-          <TouchableOpacity style={styles.cartIcon} onPress={() => navigation.navigate('addtocart',{ product: product, additionalDetails: additionalDetails})}>
+          <TouchableOpacity
+            style={styles.cartIcon}
+            onPress={() => {
+              dispatch(addToCart(product));
+              navigation.navigate('addtocart');
+            }}
+          >
             <Icon name="shopping-cart" size={40} color="blue" />
           </TouchableOpacity>
         </View>
